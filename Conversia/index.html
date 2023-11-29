@@ -73,7 +73,7 @@
     <body>
         <div class="gm4html5_div_class" id="gm4html5_div_id">
             <!-- Create the canvas element the game draws to -->
-            <canvas id="canvas" width="6000" height="6000" >
+            <canvas id="canvas" width="800" height="800" >
                      <p>Your browser doesn't support HTML5 canvas.</p>
             </canvas>
         </div>
@@ -81,5 +81,31 @@
         <!-- Run the game code -->
         <script type="text/javascript" src="html5game/Conversia.js?FBMZB=1407479220"></script>
         <script>window.onload = GameMaker_Init;</script>
+        <script>
+            function resizeCanvas() {
+              var canvas = document.getElementById('canvas');
+              var widthToHeight = 1 / 1; // Replace 8 / 6 with your game's aspect ratio
+              var newWidth = window.innerWidth;
+              var newHeight = window.innerHeight;
+              var newWidthToHeight = newWidth / newHeight;
+          
+              if (newWidthToHeight > widthToHeight) {
+                newWidth = newHeight * widthToHeight;
+                canvas.style.height = newHeight + 'px';
+                canvas.style.width = newWidth + 'px';
+              } else {
+                newHeight = newWidth / widthToHeight;
+                canvas.style.width = newWidth + 'px';
+                canvas.style.height = newHeight + 'px';
+              }
+          
+              canvas.width = newWidth;
+              canvas.height = newHeight;
+            }
+          
+            window.addEventListener('resize', resizeCanvas, false);
+            window.addEventListener('orientationchange', resizeCanvas, false);
+            resizeCanvas();
+          </script>          
     </body>
 </html>
