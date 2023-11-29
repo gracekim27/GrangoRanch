@@ -20,7 +20,6 @@
                 margin: 0px;
                 padding: 0px;
                 border: 0px;
-                overflow: hidden;
             }
             canvas {
                       image-rendering: optimizeSpeed;
@@ -82,23 +81,6 @@
 
         <!-- Run the game code -->
         <script type="text/javascript" src="html5game/Conversia.js?FBMZB=1407479220"></script>
-        <script>
-            window.onload = function() {
-                GameMaker_Init(); // Initialize the game
-                resizeGame(); // Custom function to resize the game
-            };
-        
-            function resizeGame() {
-            // Resize the canvas
-            var canvas = document.getElementById('canvas'); // Get the canvas element
-            canvas.style.width = '800px'; // Set your desired width for the canvas
-            canvas.style.height = '800px'; // Set your desired height for the canvas
-
-            // Optionally, resize the game container as well
-            var gameContainer = document.getElementById('gm4html5_div_id'); // Get the game container
-            gameContainer.style.width = '800px'; // Set your desired width for the container
-            gameContainer.style.height = '800px'; // Set your desired height for the container
-        }
-        </script>
+        <script>window.onload = GameMaker_Init;</script>
     </body>
 </html>
