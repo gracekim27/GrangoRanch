@@ -74,7 +74,7 @@
     <body>
         <div class="gm4html5_div_class" id="gm4html5_div_id">
             <!-- Create the canvas element the game draws to -->
-            <canvas id="canvas">
+            <canvas id="canvas" width="6000" height="6000">
                      <p>Your browser doesn't support HTML5 canvas.</p>
             </canvas>
         </div>
@@ -82,5 +82,64 @@
         <!-- Run the game code -->
         <script type="text/javascript" src="html5game/Conversia.js?FBMZB=1407479220"></script>
         <script>window.onload = GameMaker_Init;</script>
+        <script>
+        // Function to get the width of the window
+        function getWindowWidth() {
+            if (typeof(window.innerWidth) == 'number') {
+                return window.innerWidth; // For most browsers
+            } else if (document.documentElement && document.documentElement.clientWidth) {
+                return document.documentElement.clientWidth; // For IE 6+ in 'standards compliant mode'
+            } else if (document.body && document.body.clientWidth) {
+                return document.body.clientWidth; // For IE 4 compatible browsers
+            }
+            return 0;
+        }
+
+        // Function to get the height of the window
+        function getWindowHeight() {
+            if (typeof(window.innerHeight) == 'number') {
+                return window.innerHeight; // For most browsers
+            } else if (document.documentElement && document.documentElement.clientHeight) {
+                return document.documentElement.clientHeight; // For IE 6+ in 'standards compliant mode'
+            } else if (document.body && document.body.clientHeight) {
+                return document.body.clientHeight; // For IE 4 compatible browsers
+            }
+            return 0;
+        }
+
+        // Function to resize the game canvas
+        function resizeGame() {
+            var canvas = document.getElementById('yourCanvasId'); // Replace 'yourCanvasId' with your canvas ID
+            if (!canvas) return;
+
+            var width = getWindowWidth();
+            var height = getWindowHeight();
+
+            // Here, you can add logic to maintain the aspect ratio if needed
+            // For example, you might want to do something like:
+            // var aspectRatio = 16 / 9;
+            // height = Math.min(height, width / aspectRatio);
+            // width = Math.min(width, height * aspectRatio);
+
+            canvas.width = width;
+            canvas.height = height;
+
+            // Add your logic here to adjust game elements based on the new canvas size
+
+            redrawCanvas(); // Call a function to redraw the canvas
+        }
+
+        // Function to redraw the canvas
+        function redrawCanvas() {
+            // Redraw your game scene here
+        }
+
+        // Add an event listener to resize the game when the window size changes
+        window.addEventListener('resize', resizeGame);
+
+        // Initial resize when the game starts
+        resizeGame();
+
+        </script>
     </body>
 </html>
